@@ -108,7 +108,7 @@ Essa estratégia é utilizada por ORMs para realizar carregamento tardio de prop
 
 <img src="img/proxy1.jpg" width="55%">
 
-A classe proxy não é uma cópia da classe objetivo, ela é uma "fachada" que representa a classe objetivo. Os métodos da classe proxy simplesmente repassam a chamada para os métodos da instância _objetivo que proxy possui como membro privado. O legal desta estratégia é que a instância _objetivo só precisa ser carregada quando cliente acionar um método de proxy. Isso ajuda a economizar memória e tira de cliente responsabilidade de controlar essa questão.
+A classe proxy não é uma cópia da classe objetivo, ela é uma "fachada" que representa a classe objetivo. Os métodos da classe proxy simplesmente repassam a chamada para os métodos da instância _objetivo que proxy possui como membro privado. O legal desta estratégia é que a instância _objetivo só precisa ser carregada quando cliente acionar um método de proxy. Isso ajuda a economizar memória e tira de cliente a responsabilidade de controlar essa questão.
 
 --- 
 
