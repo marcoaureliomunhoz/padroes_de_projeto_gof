@@ -118,6 +118,19 @@ Pode ser utilizado para lidar com contextos de hierarquia de classes de uma mesm
 
 Um exemplo é a representação de um sistema de arquivos onde temos arquivos e diretórios que são arquivos especiais que podem apontar para outros arquivos. 
 
+**Flyweight**
+
+> Intenção: usar compartilhamento para suportar eficientemente grandes quantidades de objetos de granularidade fina. 
+
+A ideia é promover o uso mais eficiente da memória através da redução de instâncias de mesmo tipo quando isso é possível.
+
+O padrão é muito utilizado em aplicações que manipulam uma grande quantidade de objetos repetidos e compartilháveis para economizar memória através do cache de objetos.
+
+A ideia é que a classe cliente solicite a uma classe agregadora o objeto desejado, essa classe agregadora antes de instanciar verifica em sua lista se o objeto já foi usado, se não foi usado, instancia, guarda na lista e devolve, se já foi usado apenas devolve. 
+
+<img src="img/flyweight1.jpg" width="80%">
+
+
 --- 
 
 **Fontes** 
