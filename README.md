@@ -18,3 +18,11 @@ Para isso devemos definir uma classe com o construtor privado, um atributo está
 
 <img src="img/singleton1.jpg">
 
+
+
+--- 
+**Fontes** 
+- https://pt.wikipedia.org/wiki/Padr%C3%A3o_de_projeto_de_software
+- https://brizeno.wordpress.com/category/padroes-de-projeto/
+- https://www.youtube.com/watch?v=8vyfyPFhRUE (Giovanni Bassi)
+- https://www.youtube.com/watch?v=gEGLVMY-ifA&list=PLc3ShgoNmIijcDnXTnQtdHAQMwn_t7aM1 (IFES - Colatina ES) 
