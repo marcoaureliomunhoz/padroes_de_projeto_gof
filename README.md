@@ -140,6 +140,18 @@ Para que seja possível essa flexibidade o padrão define entre a implementaçã
 
 <img src="img/bridge1.jpg" width="90%">
 
+**Decorator**
+
+> Intenção: dinamicamente, agregar responsabilidades adicionais a objetos. Os Decorators fornecem uma alternativa flexível ao uso de subclasses para extensão de funcionalidades.
+
+Java, C# assim como outras tecnologias não implementam herança múltipla. Decorator se baseia em recursos comuns da orientação a objetos para alcançar seus objetivos, e por isso é possível obter herança múltipla em tecnologias que não implementam o recurso.
+
+<img src="img/decorator1.jpg" width="40%">
+
+A ideia é partir de uma classe base abstrata com comportamento comum/base, estender essa classe base e nesta subclasse receber no construtor uma instância da classe base. Nos métodos sobrescritos é que ocorrem a "mágica" (herança múltipla), pois a subclasse tem como membro uma instância da classe base e aí podemos acionar métodos desta instância base e também podemos acionar métodos da instância filho. Ao estender ou utilizar uma classe filha obtemos múltiplos comportamentos.
+
+Além de nos permitir simular "herança múltipla" com Decorator conseguimos adicionar/trocar comportamento em tempo de execução para uma dada classe.
+
 --- 
 
 **Fontes** 
