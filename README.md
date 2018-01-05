@@ -5,10 +5,18 @@ Em Engenharia de Software, um padrão de projeto (design pattern) é uma soluç�
 - Classificação por Finalidade
     - **Padrões de Criação** (5): tratam da definição de classes criadoras de objetos com o objetivo de abstrair a complexidade da criação e separar a rotina de criação de um objeto de sua representação ou de adiar o processo de criação.
         - Singleton
-        - Factory Method
-        - Abstracty Factory
-        - Builder
+        - Factory Method (Método Fábrica)
+        - Abstracty Factory (Classe Fábrica)
+        - Builder (Classe Construtora)
         - Prototype
+    - **Padrões Estruturais** (7): tratam das composições/associações entre classes.
+        - Facade (Classe Fachada)
+        - Adapter
+        - Proxy
+        - Composite
+        - Flyweight
+        - Bridge
+        - Decorator
 
 --- 
 
@@ -67,6 +75,18 @@ Torna o processo de criação mais eficiente, esconde (desacopla) os produtos/ob
 A ideia é evitar a instanciação de objetos com _new_ e realizar _clones_ de um protótipo a partir de uma implementação que estende o protótipo.
 
 Se a tecnologia já oferece recursos de _clonagem_, como Java e Javascript, além de tornar o processo de "criação" mais rápido e eficiente, fica fácil utilizar o padrão. Se a tecnologia não oferece, somos obrigados a simular e neste caso não temos ganho de velocidade, mas mesmo assim temos vantagens ao promover o desacoplamento.
+
+--- 
+
+**Facade** (Classe Fachada)
+
+> Intenção: fornecer uma interface unificada para um conjunto de interfaces em um subsistema. Facade define uma interface de nível mais alto que torna o subsistema mais fácil de ser usado.
+
+A ideia é evitar que o cliente tenha que lidar com responsabilidades específicas de outros subsistemas (responsabilidades que não são suas).
+
+O problema com essa centralização da complexidade é que a classe fachada pode crescer descontroladamente para abrigar uma conjunto grande de possibilidades.
+
+Esse padrão foi muito utilizado e talvez ainda seja em aplicações que fazem uso de DLLs ou APIs externas (subsistemas). Geralmente nestes casos define-se uma classe fachada que fornece assinaturas para métodos desejados e ainda abstrai toda a complexidade de integração.
 
 --- 
 **Fontes** 
