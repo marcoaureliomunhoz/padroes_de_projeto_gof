@@ -110,6 +110,14 @@ Essa estratégia é utilizada por ORMs para realizar carregamento tardio de prop
 
 A classe proxy não é uma cópia da classe objetivo, ela é uma "fachada" que representa a classe objetivo. Os métodos da classe proxy simplesmente repassam a chamada para os métodos da instância _objetivo que proxy possui como membro privado. O legal desta estratégia é que a instância _objetivo só precisa ser carregada quando cliente acionar um método de proxy. Isso ajuda a economizar memória e tira de cliente a responsabilidade de controlar essa questão.
 
+**Composite**
+
+> Intenção: compor objetos em estruturas de árvore para representar hierarquia partes-todo. Composite permite aos clientes tratarem de maneira uniforme objetos individuais e composições de objetos.
+
+Pode ser utilizado para lidar com contextos de hierarquia de classes de uma mesma família que pode ser representada e tratada de forma recursiva.
+
+Um exemplo é a representação de um sistema de arquivos onde temos arquivos e diretórios que são arquivos especiais que podem apontar para outros arquivos. 
+
 --- 
 
 **Fontes** 
