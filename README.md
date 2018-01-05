@@ -15,7 +15,7 @@ Em Engenharia de Software, um padrão de projeto (design pattern) é uma soluç�
         - Proxy
         - Composite
         - Flyweight
-        - Bridge
+        - Bridge (Ponte)
         - Decorator
 
 --- 
@@ -130,6 +130,15 @@ A ideia é que a classe cliente solicite a uma classe agregadora o objeto deseja
 
 <img src="img/flyweight1.jpg" width="80%">
 
+**Bridge** (Ponte)
+
+> Intenção: desacoplar uma abstração da sua implementação, de modo que as duas possam variar independentemente.
+
+Apesar de deixar o sistema mais complexo o padrão promove uma enorme flexibidade, pois você pode variar a abstração e pode variar também a sua implementação. 
+
+Para que seja possível essa flexibidade o padrão define entre a implementação e a abstração uma interface (contrato).
+
+<img src="img/bridge1.jpg" width="90%">
 
 --- 
 
