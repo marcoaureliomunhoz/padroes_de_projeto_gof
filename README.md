@@ -88,7 +88,18 @@ O problema com essa centralização da complexidade é que a classe fachada pode
 
 Esse padrão foi muito utilizado e talvez ainda seja em aplicações que fazem uso de DLLs ou APIs externas (subsistemas). Geralmente nestes casos define-se uma classe fachada que fornece assinaturas para métodos desejados e ainda abstrai toda a complexidade de integração.
 
+**Adapter**
+
+> Intenção: converter a interface de uma classe em outra interface, esperada pelo cliente. O Adapter permite que interfaces incompatíveis trabalhem em conjunto – o que, de outra forma, seria impossível.
+
+A ideia é desacoplar o cliente de classes que podem ser trocadas por algum motivo. Para que ocorra o desacoplamento define-se uma classe intermediária adaptadora (que estende uma classe que pode ser trocada) entre cliente e as classes que podem ser trocadas e para evitar que sejam necessárias alterações no cliente quando houver mudanças no adaptador utiliza-se uma interface como contrato entre o adaptador e o cliente. Neste caso o cliente aciona o adaptador por meio do contrato (interface) e o adaptador é quem assume a responsabilidade de lidar com as classes que podem ser trocadas. 
+
+> A ideia é parecida com Facade. 
+
+<img src="img/adapter1.jpg" width="40%">
+
 --- 
+
 **Fontes** 
 - https://pt.wikipedia.org/wiki/Padr%C3%A3o_de_projeto_de_software
 - https://brizeno.wordpress.com/category/padroes-de-projeto/
