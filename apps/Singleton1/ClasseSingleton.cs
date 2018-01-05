@@ -11,7 +11,8 @@ namespace Singleton1
     {
         private static readonly ClasseSingleton _instancia = new ClasseSingleton();
 
-        //como o construtor fica escondido será difícil algum cliente conseguir instanciar
+        //como o construtor fica escondido será difícil algum cliente conseguir instanciar, mas 
+        //existem técnicas para isso
         private ClasseSingleton() { }
 
         public static ClasseSingleton getInstancia()
