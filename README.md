@@ -98,6 +98,18 @@ A ideia é desacoplar o cliente de classes que podem ser trocadas por algum moti
 
 <img src="img/adapter1.jpg" width="40%">
 
+**Proxy** 
+
+> Intenção: fornecer um substituto ou marcador da localização de outro objeto para controlar o acesso a esse objeto.
+
+A ideia é inserir uma classe substituta no meio do caminho para carregamento tardio (lazzy loading).
+
+Essa estratégia é utilizada por ORMs para realizar carregamento tardio de propriedades/relacionamentos.
+
+<img src="img/proxy1.jpg" width="55%">
+
+A classe proxy não é uma cópia da classe objetivo, ela é uma "fachada" que representa a classe objetivo. Os métodos da classe proxy simplesmente repassam a chamada para os métodos do _objetivo que proxy possui como membro privado.
+
 --- 
 
 **Fontes** 
