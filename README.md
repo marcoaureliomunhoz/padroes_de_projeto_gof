@@ -17,6 +17,18 @@ Em Engenharia de Software, um padrão de projeto (design pattern) é uma soluç�
         - Flyweight
         - Bridge (Ponte)
         - Decorator
+    - **Padrões Comportamentais** (11): tratam da divisão de responsabilidades na definição de classes.
+        - Visitor
+        - Template Method
+        - Strategy/Policy(Política)
+        - Observer
+        - Command
+        - Mediator
+        - Memento
+        - State
+        - Interpreter
+        - Chain of Responsibility (Cadeia de Responsabilidades)
+        - Iterator
 
 --- 
 
