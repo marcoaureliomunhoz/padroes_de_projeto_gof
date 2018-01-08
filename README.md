@@ -19,16 +19,16 @@ Em Engenharia de Software, um padrão de projeto (design pattern) é uma soluç�
         - Decorator
     - **Padrões Comportamentais** (11): tratam da divisão de responsabilidades na definição de classes.
         - Visitor
+        - Command
         - Template Method
         - Strategy/Policy(Política)
-        - Observer
-        - Command
-        - Mediator
+        - Observer        
+        - Mediator (Mediador/Moderador)
         - Memento
-        - State
-        - Interpreter
+        - State (Estado)
         - Chain of Responsibility (Cadeia de Responsabilidades)
         - Iterator
+        - Interpreter (Interpretador de Linguagem)
 
 --- 
 
@@ -163,6 +163,124 @@ Java, C# assim como outras tecnologias não implementam herança múltipla. Deco
 A ideia é partir de uma classe base abstrata com comportamento comum/base, estender essa classe base e nesta subclasse receber no construtor uma instância da classe base. Nos métodos sobrescritos é que ocorrem a "mágica" (herança múltipla), pois a subclasse tem como membro uma instância da classe base e aí podemos acionar métodos desta instância base e também podemos acionar métodos da instância filho. Ao estender ou utilizar uma classe filha obtemos múltiplos comportamentos.
 
 Além de nos permitir simular "herança múltipla" com Decorator conseguimos adicionar/trocar comportamento em tempo de execução para uma dada classe.
+
+---
+
+**Visitor** (Visitante)
+
+> Intenção: representar uma operação a ser executada nos elementos de uma estrutura de objetos. Visitor permite definir uma nova operação sem mudar as classes dos elementos sobre os quais opera.
+
+A ideia é passar a complexidade operacional de um objeto para outros objetos, ou seja, é separar as operações de um objeto de sua representação. Em vez do próprio objeto manipular seus dados deve-se passar/autorizar/encarregar/delegar para outros objetos cada tipo de manipulação/operação.
+
+Portanto gera-se várias classes e isso facilita a modificação. Fica mais fácil modificar uma classe específica sem alterar as demais e fica mais fácil também a modificação de várias classes em paralelo por uma equipe.
+
+<img src="img/visitor1.jpg" width="55%">
+
+ElementoConcreto aceita Visitor e por isso podemos passar ElementoConcreto para Visitor operar sobre ElementoConcreto. VisitorConcreto que realiza Visitor é quem opera sobre ElementoConcreto. Perceba que agora ElementoConcreto não precisa resolver todos os problemas sozinho, ele pode aceitar vários Visitors e compartilhar com estes os seus problemas, ou seja, podemos ter vários Visitors concretos resolvendo vários problemas de ElementoConcreto.
+
+**Template Method** (Método Modelo)
+
+> Intenção: definir o esqueleto de um algoritmo em uma operação, postergando alguns passos para as subclasses. Template Method permite que subclasses redefinam certos passos de um algoritmo sem mudar a estrutura do mesmo.
+
+A ideia é extrair de uma rotina principal para outras rotinas abstratas, instruções que mudam ou podem mudar com frequencia, sem afetar a rotina principal.
+
+Deixa a rotina principal mais clara/limpa e separa as responsabilidades. Isso facilita a manutenção.
+
+<img src="img/template_method1.jpg" width="30%">
+
+**Command**
+
+> Intenção: encapsular uma solicitação como objeto, desta forma permitindo parametrizar cliente com diferentes solicitações, enfileirar ou fazer o registro de solicitações e suportar operações que podem ser desfeitas.
+
+A ideia é substituir operações/instruções por classes de comando tornando o sistema mais flexível à mudanças. Command desacopla o objeto que invoca a operação daquele que sabe como executá-la.
+
+Outra vantagem é que a operação comando=classe pode ser armazenada em uma fila e executada quando melhor convir.
+
+De acordo com o padrão GOF, a classe CommandConcrete deve receber em seu construtor o Receiver (que sabe como resolver o problema) e acionar Receiver nos métodos execute e undo. Além disso Client deve definir qual Receiver sabe resolver o problema, deve definir os comandos necessários (CommandConcrete) passando Receiver como parâmetro, deve ainda definir um Controler/Invoker que armazena os commands e ao ser acionado sabe qual command deve ser acionado. Portanto o padrão GOF define um Controller/Invoker para controlar/invocar os comandos.
+
+Podemos também tirar o controlador da estrutura. Neste caso quem exerce o controle é o próprio cliente. Essa estratágia é mais simples e se encaixa em projetos mais simples.
+
+_Essa ideia de substituir operações por classes diminui o número de condições de um software e isso é bom, pois devemos evitar o número excessivo de "ifs" em um software. Quebrar uma rotina em pequenas instruções e leva-las para classes específicas e pequenas ajuda no desacomplamento._ 
+
+Muito utilizado em contextos de execução remota, registro de log (logging) e transações/históricos, contextos de operações fazer/desfazer.
+
+**Strategy/Policy** (Política)
+
+> Intenção: definir uma família de algoritmos, encapsular cada uma delas e torná-las intercambiáveis. Strategy permite que o algoritmo varie independentemente dos clientes que o utilizam.
+
+A ideia é extrair políticas/funções estratégicas de um contexto por meio de classes abstratas ou interfaces tornando a manutenção mais flexível. Não é preciso alterar o contexto todo, basta alterar as classes concretas ou implementar novas classes concretas.
+
+O padrão é muito utilizado na definição de interfaces repositórios (IRepository) em aplicações que lidam com vários contextos de repositórios ou bancos de dados. Também muito utilizado para inserir comportamentos falsos em testes de software (Mock).
+
+<img src="img/strategy1.jpg" width="35%">
+
+**Observer** 
+
+> Intenção: definir uma dependência um para muitos entre objetos, de maneira que quando um objeto muda de estado todos os seus dependentes são notificados e atualizados automaticamente.
+
+A ideia é tirar do cliente a responsabilidade de ficar esperando por mudanças (em loop) e assim evitar que a aplicação fique por um longo tempo inacessível ao usuário ou tenha que lidar com esta complexidade.
+
+Muito utilizado na implementação de eventos em aplicações Windows Forms para evitar que a aplicação (thread principal) fique inacessível enquanto uma ou várias operações executam em paralelo (em outras threads).
+
+<img src="img/observer1.jpg" width="35%">
+
+**Mediator** (Mediador/Moderador)
+
+> Intenção: definir um objeto mediador que encapsula a forma como um conjunto de objetos colegas interagem. O Mediator promove o fraco/baixo acoplamento ao evitar que os objetos colegas se refiram uns aos outros explicitamente e ao permitir variar suas interações independentemente. 
+
+Assim como em banco de dados quando temos uma relação muitos para muitos usamos a estratégia de definir uma tabela intermediária, em orientação a objetos e em certos contextos, essa estratégia é também uma prática indicada. É justamente isso que o Mediator trata.
+
+Pode ser usado em aplicações para enviar mensagens em broadcast aos componentes/agentes ativos.
+
+<img src="img/mediator1.jpg" width="85%">
+
+Repare que o Cliente apenas pede para o Mediador enviar a mensagem para um dado Colega e portanto se exime desta responsabilidade. É o MediadorConcreto que assume a responsabilidade de lidar com a complexidade de enviar a mensagem para o devido Colega.
+
+Nem sempre é possível realizar comunicação entre objetos por meio de mensagens padrões (protocolos). Mas quando este for o caso o Mediator é um ótimo padrão para prover reuso e fraco acoplamento.
+
+Entretanto em termos práticos a tendência é que o objeto Mediador se torne complexo. Portanto deve-se avaliar isso também e mesclar a solução com outros padrões.
+
+**Memento**
+
+> Intenção: sem violar o encapsulamento, capturar e externalizar um estado interno de um objeto, de maneira que o objeto possa ser restaurado para esse estado mais tarde.
+
+A ideia é definir uma classe (Memento) responsável por salvar o estado de um objeto (Originador) desejado e uma outra classe (Armazenadora) que fica responsável por armazenar todas as cópias de mementos.
+
+<img src="img/memento1.jpg" width="45%">
+
+Pode ser utilizado em aplicações como editores de texto, editores de imagens e editores em geral.
+
+**State** (Estado)
+
+> Intenção: permite a um objeto alterar seu comportamento quando seu estado interno muda. O objeto parecerá ter mudado de classe.
+
+A ideia é representar estados de um objeto por outros objetos. Em vez de inserir complexidade no tratamento de estado o padrão nos propõe a invocação de métodos em objetos de estado (que possuem a inteligência necessária para lidar com o estado).
+
+Muito utilizado em jogos SideScrool como Super Mario Bros de Donkey Kong Quest onde a cada evento o personagem assume um estado.
+
+<img src="img/state1.jpg" width="80%">
+
+Repare que Cliente aciona Contexto para resolver um problema, Contexto aciona o StateConcreto devido passando ContextoInfo, por sua vez StateConcreto com base em ContextoInfo processa e devolve o "novo" State.
+
+**Chain of Responsibility** (Cadeia de Responsabilidades)
+
+> Intenção: evitar o acoplamento do remetente de uma solicitação ao seu receptor, ao dar a mais de um objeto a oportunidade de tratar a solicitação. Encadear os objetos receptores, passando a solicitação ao longo da cadeia até que um objeto a trate.
+
+Uma boa prática para remover a complexidade de uma rotina, promover fraco acoplamento e a manutenibilidade é substituir os possíveis caminhos por classes. Entretanto com essa substituição ainda temos decisões sendo tomadas no solicitante.
+
+A ideia do padrão é tirar do solicitante a responsabilidade de decidir qual objeto receptor deve responder. Para isso ele propõe a utilização de uma cadeia de objetos receptores. O solicitante faz a solicitação para o primeiro receptor da cadeia, se ele pode responder ele responde, se não pode passa a solicitação para o próximo da cadeia, o próximo faz o mesmo e se for necessário passa a solicitação para o próximo até que algum receptor resolva a solicitação ou até que se chegue ao final da cadeia.
+
+<img src="img/chain_of_responsibility1.jpg" width="55%">
+
+**Iterator** 
+
+> Intenção: fornecedor um meio de acessar, sequencialmente, os elementos de um objeto agregado sem expor sua representação subjacente.
+
+A maiorias das tecnologias/linguagens já oferecem iterators.
+
+**Interpreter** (Interpretador de Linguagem)
+
+> Intenção: dada uma linguagem, definir uma representação para sua gramática juntamente com um interpretador que usa a representação para interpretar sentenças dessa linguagem.
 
 --- 
 
